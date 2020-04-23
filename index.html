@@ -12,14 +12,14 @@
   
   <style>
     @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
-      div#chart1 {
+      div#chart1, div#chart2 {
         display: none;
       }
 
     }
 
     @media screen and (orientation: landscape) {
-      div#chart1alert {
+      div#chart1alert, div#chart2alert {
         display: none;
       }
     }
@@ -297,6 +297,41 @@
               </div>
             </div>
           </div>
+
+          <div class="row">
+            <!-- Area Chart -->
+            <div class="col-xl-12 col-lg-12 mb-5" id="chart2alert">
+              <div class="card shadow mb-12">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Evolução Diaria de Casos Confirmados</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-area">
+                    <div>Para visualizar o grafico no telemovel coloque o dispositivo na horizontal!</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-12 col-lg-12 mb-5" id="chart2">
+              <div class="card shadow mb-12">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Evolução Diaria de Casos Confirmados</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-area">
+                    <canvas id="canvas3"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
           <!-- Grafico Crescimento -->
           <div class="row">
             <!-- Area Chart -->
@@ -325,13 +360,11 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  
-                    <div id="map">
-                      Em Construção
-                    </div>
-                  
+                  <div class="chart-area">
+                    <canvas id="canvas2"></canvas>
+                  </div>
                 </div>
-              </div>
+            </div>
             </div>
           </div>
 
@@ -353,6 +386,7 @@
               </div>
             </div>
           </div>
+          
 
           <!-- Noticias -->
           <div class="row">
@@ -413,8 +447,12 @@
   <!-- Page level plugins -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
 
+  <script src="js/Chart.PieceLabel.min.js"></script>
+  <script src="js/utils.min.js"></script>
   <script src="js/loaddata.min.js"></script>
   <script src="js/dailychart.min.js"></script>
+  <script src="js/activechart.min.js"></script>
+  <script src="js/distributionchart.min.js"></script>
 
   <script language="javascript">
 
@@ -430,17 +468,18 @@ svgholder.onload = function() {
         success: function (data) { 
             processLocalData(data); 
             svgObject = document.getElementById('mapa').contentDocument;
-            svgObject.getElementById('countEnc').textContent = localdata.locEnc[localdata.locEnc.length-1];
-            svgObject.getElementById('countSantoIsidoro').textContent= localdata.locEnc[localdata.locEnc.length-1];
-            svgObject.getElementById('countEriceira').textContent= localdata.locEriceira[localdata.locEriceira.length-1];
-            svgObject.getElementById('countCarvoeira').textContent= localdata.locCarvoeira[localdata.locCarvoeira.length-1];
-            svgObject.getElementById('countAzueira').textContent= localdata.locAzueira[localdata.locAzueira.length-1];
-            svgObject.getElementById('countMafra').textContent= localdata.locMafra[localdata.locMafra.length-1];
-            svgObject.getElementById('countCheleiros').textContent= localdata.locCheleiros[localdata.locCheleiros.length-1];
-            svgObject.getElementById('countGradil').textContent= localdata.locGradil[localdata.locGradil.length-1];
-            svgObject.getElementById('countMalveira').textContent= localdata.locMalveira[localdata.locMalveira.length-1];
-            svgObject.getElementById('countMilharado').textContent= localdata.locMilharado[localdata.locMilharado.length-1];
-            svgObject.getElementById('countVenda').textContent= localdata.locVenda[localdata.locVenda.length-1]; 
+            svgObject.getElementById('countEnc').textContent =          localdata.locEnc[localdata.locEnc.length-1];
+            svgObject.getElementById('countSantoIsidoro').textContent=  localdata.locEnc[localdata.locSantoIsidoro.length-1];
+            svgObject.getElementById('countEriceira').textContent=      localdata.locEriceira[localdata.locEriceira.length-1];
+            svgObject.getElementById('countCarvoeira').textContent=     localdata.locCarvoeira[localdata.locCarvoeira.length-1];
+            svgObject.getElementById('countAzueira').textContent=       localdata.locAzueira[localdata.locAzueira.length-1];
+            svgObject.getElementById('countMafra').textContent=         localdata.locMafra[localdata.locMafra.length-1];
+            svgObject.getElementById('countCheleiros').textContent=     localdata.locCheleiros[localdata.locCheleiros.length-1];
+            svgObject.getElementById('countGradil').textContent=        localdata.locGradil[localdata.locGradil.length-1];
+            svgObject.getElementById('countMalveira').textContent=      localdata.locMalveira[localdata.locMalveira.length-1];
+            svgObject.getElementById('countMilharado').textContent=     localdata.locMilharado[localdata.locMilharado.length-1];
+            svgObject.getElementById('countVenda').textContent=         localdata.locVenda[localdata.locVenda.length-1]; 
+            drawPieChart();
         }
     });
 }
@@ -453,6 +492,7 @@ $(document).ready(function () {
         success: function (data) { 
             processMainData(data); 
             drawChart();
+            drawActiveChart()
         }
     });
 

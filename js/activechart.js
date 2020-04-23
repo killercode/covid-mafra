@@ -1,51 +1,17 @@
-/*!
- * Start Bootstrap - SB Admin 2 v4.0.7 (https://startbootstrap.com/template-overviews/sb-admin-2)
- * Copyright 2013-2020 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/blob/master/LICENSE)
- */
+function drawActiveChart() {
 
-function drawChart() {
-    
     var color = Chart.helpers.color;
     var config = {
-        type: "line",
+        type: 'line',
         data: {
             labels: maindata.dates,
             datasets: [{
-                label: "Casos Confirmados",
+                label: 'Casos Activos',
                 backgroundColor: color(window.chartColors.purple).alpha(0.5).rgbString(),
                 borderColor: window.chartColors.purple,
                 borderWidth: 4,
                 fill: false,
-                data: maindata.confirmed
-            }, {
-                label: "Casos Suspeitos",
-                backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-                borderColor: window.chartColors.blue,
-                borderWidth: 1,
-                fill: false,
-                data: maindata.suspects
-            }, {
-                label: "Contactos em Vigilância",
-                backgroundColor: color(window.chartColors.orange).alpha(0.5).rgbString(),
-                borderColor: window.chartColors.orange,
-                borderWidth: 1,
-                fill: false,
-                data: maindata.contacts
-            }, {
-                label: "Obitos",
-                backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-                borderColor: window.chartColors.red,
-                borderWidth: 1,
-                fill: false,
-                data: maindata.deaths
-            }, {
-                label: "Recuperados",
-                backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
-                borderColor: window.chartColors.green,
-                borderWidth: 1,
-                fill: false,
-                data: maindata.recovered
+                data: maindata.active,
             }]
         },
         options:
@@ -65,12 +31,6 @@ function drawChart() {
                         return data.datasets[tooltipItem.datasetIndex].label + ': ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index].toLocaleString();
 
                     },
-
-                    afterBody: function (tooltipItem, data) {
-                        return "Taxa de Crescimento: " + growth.toLocaleString();
-                    }
-
-
                 }
             },
             maintainAspectRatio: false,
@@ -100,7 +60,8 @@ function drawChart() {
                 }]
             },
         }
-    }
-    var ctx = document.getElementById('canvas').getContext('2d');
+    };
+
+    var ctx = document.getElementById('canvas3').getContext('2d');
     window.myLine = new Chart(ctx, config);
 }

@@ -1,10 +1,6 @@
-
-
-
 // Parses and prepare the news feed
 function processNews(data) {
     $(data).find("item").each(function () {
-
         el = $(this);
         cats = el.find("category")
         isCovid = false
@@ -12,7 +8,6 @@ function processNews(data) {
             if (cats[i].textContent == "Covid19") {
                 isCovid = true;
             }
-
         }
         if (isCovid) {
             template = "<a class='dropdown-item d-flex align-items-center' href='" + el.find("link").text() + "'>" +
@@ -39,7 +34,8 @@ maindata =
     confirmed: [],
     contacts: [],
     recovered: [],
-    suspects: []
+    suspects: [],
+    active:[],
 }
 
 // Localities data
@@ -150,6 +146,7 @@ function fillData(val, val2) {
     maindata.contacts.push(val2.contact);
     maindata.recovered.push(val2.recovery);
     maindata.suspects.push(val2.suspect);
+    maindata.active.push(val2.confirmed-val2.deaths-val2.recovery);
 }
 
 function fillLocalData(val, val2)
@@ -185,4 +182,3 @@ function convertCSVToJson(allText) {
     }
     return result; //JSON
 }
-
