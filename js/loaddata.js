@@ -76,6 +76,7 @@ function processMainData(allText) {
     document.getElementById("lblDeaths").innerHTML = maindata.deaths[maindata.deaths.length - 1];
     document.getElementById("lblRecovered").innerHTML = maindata.recovered[maindata.recovered.length - 1];
     document.getElementById("lblGrowth").innerHTML = parseFloat(((maindata.confirmed[maindata.confirmed.length - 1] - maindata.confirmed[maindata.confirmed.length - 2]) / maindata.confirmed[maindata.confirmed.length - 2]) * 100).toFixed(2).toLocaleString() + "%";
+    document.getElementById("lblActive").innerHTML = maindata.active[maindata.active.length - 1];
 
     diffConfirmed = maindata.confirmed[maindata.confirmed.length - 1] - maindata.confirmed[maindata.confirmed.length - 2];
     document.getElementById("lblDiffConfirmed").innerHTML = getSignal(diffConfirmed) + diffConfirmed.toLocaleString();
@@ -96,6 +97,10 @@ function processMainData(allText) {
     diffContact = maindata.contacts[maindata.contacts.length - 1] - maindata.contacts[maindata.contacts.length - 2];
     document.getElementById("lblDiffContact").innerHTML = getSignal(diffContact) + diffContact.toLocaleString();
     getChevron("iconContact", diffContact, true);
+    
+    diffActive = maindata.active[maindata.active.length - 1] - maindata.active[maindata.active.length - 2];
+    document.getElementById("lblDiffActive").innerHTML = getSignal(diffActive) + diffActive.toLocaleString();
+    getChevron("iconActive", diffActive, false);
 
     diffGrowth = parseFloat(((maindata.confirmed[maindata.confirmed.length - 1] - maindata.confirmed[maindata.confirmed.length - 2]) / maindata.confirmed[maindata.confirmed.length - 2]) * 100).toFixed(2) - parseFloat(((maindata.confirmed[maindata.confirmed.length - 2] - maindata.confirmed[maindata.confirmed.length - 3]) / maindata.confirmed[maindata.confirmed.length - 3]) * 100).toFixed(2);
     document.getElementById("lblDiffGrowth").innerHTML = getSignal(diffGrowth) + diffGrowth.toLocaleString() + "%";

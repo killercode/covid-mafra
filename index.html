@@ -9,25 +9,86 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="og:image" content="">
-  
+
   <style>
+    .btn-facebook {
+      color: #fff;
+      background-color: #4C67A1;
+      border-radius: 0!important;
+      border-width: 1px!important;
+      border-style: solid!important;
+    }
+
+    .btn-facebook:hover {
+      color: #fff;
+      background-color: #405D9B;
+    }
+
+    .btn-facebook:focus {
+      color: #fff;
+    }
+
+    .btn-reddit {
+      color: #fff!important;
+      background-color: #EF4623!important ;
+      border-radius: 0!important;
+      border-width: 1px!important;
+      border-style: solid!important;
+    }
+
+    .btn-reddit:hover {
+      color: #fff!important;
+      background-color: rgb(173, 51, 27)!important;
+    }
+
+    .btn-reddit:focus {
+      color: #fff!important;
+    }
+
+    .btn-twitter {
+      color: #fff !important;
+      background-color: #00ACEE !important;
+      border-radius: 0!important;
+
+      border-width: 1px!important;
+      border-style: solid!important;
+      border-color: #0075a2!important;
+    }
+
+    .btn-twitter:link,
+    .btn-twitter:visited {
+      color: #fff!important;
+    }
+
+    .btn-twitter:active,
+    .btn-twitter:hover {
+      background: #0075a2!important;
+      color: #fff!important;
+    }
+
     @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
-      div#chart1, div#chart2 {
+
+      div#chart1,
+      div#chart2 {
         display: none;
       }
 
     }
 
     @media screen and (orientation: landscape) {
-      div#chart1alert, div#chart2alert {
+
+      div#chart1alert,
+      div#chart2alert {
         display: none;
       }
     }
+
     #map {
-    position:relative
-}
-    .map_title{
-      position:absolute;
+      position: relative
+    }
+
+    .map_title {
+      position: absolute;
     }
   </style>
   <title>COVID-19 Situação Mafra</title>
@@ -49,7 +110,8 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="sidebar-expanded d-none d-md-block navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="sidebar-expanded d-none d-md-block navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+      id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -90,7 +152,7 @@
           <span>GitHub</span></a>
       </li>
 
-           
+
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -121,7 +183,35 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <div class="row">
+              <div class="col-auto">
             <div class="h5 mb-0 text-gray-800">Situação do Concelho à data de 22/04/2020 ( Actualizado a 23/04/2020 )
+            </div>
+            </div>
+          </div>
+            <div class="row">
+              <div class="col-auto">
+                <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://covid.mafralab.com&p[images][0]=MafraLab-logo.png&p[title]=Seguimento%20COVID-19%20no%20Concelho%20de%20Mafra&p[summary]=Dados%20actualizados%20Diariamente!" target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false">
+                  <button style="width:100%; margin-top:10px;" type="button" class="btn btn-facebook btn-lg">
+                    <i class="fab fa-facebook-f"></i> Partilhar no Facebook
+                  </button>
+                </a>
+              </div>
+              <div class="col-auto">
+                <a href="https://twitter.com/share?url=https://covid.mafralab.com/twitter-button/" title="Twitter" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=450'); return false">
+                  <button style="width:100%; margin-top:10px;" target="_blank" class="btn btn-twitter btn-lg">
+                    <i class="fab fa-twitter"></i> Partilhar no Twitter
+                  </button>
+                </a>
+              </div>
+              <div class="col-auto">
+                <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fcovid.mafralab.com%2F&title=Dados%20do%20Covid-19%20no%20Concelho%20de%Mafra20" title="Reddit" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=550'); return false">
+                  <button style="width:100%; margin-top:10px;" type="button" class="btn btn-reddit btn-lg">
+                    <i class="fab fa-reddit"></i> Partilhar no Reddit
+                  </button>
+                </a>
+              </div>
+              
             </div>
           </div>
 
@@ -129,7 +219,7 @@
           <div class="row">
 
             <!-- Casos Confirmados -->
-            <div class="col-xl-2 col-md-6 mb-5">
+            <div class="col-xl-3 col-md-6 mb-5">
               <div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(153, 102, 255) !important;">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -153,22 +243,22 @@
               </div>
             </div>
 
-            <!-- Casos Suspeitos -->
-            <div class="col-xl-2 col-md-6 mb-5">
-              <div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(54, 162, 235) !important;">
+            <!-- Casos Activos -->
+            <div class="col-xl-3 col-md-6 mb-5">
+              <div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(255, 0, 0) !important;">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Casos Suspeitos</div>
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Casos Ativos</div>
                       <div class="row">
                         <div class="col mr-2">
-                          <div class="h5 mb-0 font-weight-bold text-gray-800"><label id="lblSuspects"></label></div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"><label id="lblActive"></label></div>
                         </div>
                         <div class="col mr-2">
-                          <i id="iconSuspect" class="fas"></i>
+                          <i id="iconActive" class="fas"></i>
                         </div>
                       </div>
-                      <div>Diferença: <label id="lblDiffSuspect"></label></div>
+                      <div>Diferença: <label id="lblDiffActive"></label></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-search fa-2x text-gray-300"></i>
@@ -178,34 +268,8 @@
               </div>
             </div>
 
-            <!-- Contactos em Vigilancia -->
-            <div class="col-xl-2 col-md-6 mb-5">
-              <div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(255, 159, 64) !important;">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Contactos em Vigilância</div>
-                      <div class="row">
-                        <div class="col mr-2">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><label id="lblContacts"></label>
-                          </div>
-                        </div>
-                        <div class="col mr-2">
-                          <i id="iconContact" class="fas"></i>
-                        </div>
-                      </div>
-                      <div>Diferença: <label id="lblDiffContact"></label></div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-phone fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Obitos -->
-            <div class="col-xl-2 col-md-6 mb-5">
+             <!-- Obitos -->
+            <div class="col-xl-3 col-md-6 mb-5">
               <div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(255, 99, 132) !important;">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -231,7 +295,7 @@
 
 
             <!-- Recuperados -->
-            <div class="col-xl-2 col-md-6 mb-5">
+            <div class="col-xl-3 col-md-6 mb-5">
               <div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(75, 192, 192) !important;">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -255,9 +319,62 @@
               </div>
             </div>
 
+            <!-- Casos Suspeitos -->
+            <div class="col-xl-3 col-md-6 mb-5">
+              <div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(54, 162, 235) !important;">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Casos Suspeitos</div>
+                      <div class="row">
+                        <div class="col mr-2">
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"><label id="lblSuspects"></label></div>
+                        </div>
+                        <div class="col mr-2">
+                          <i id="iconSuspect" class="fas"></i>
+                        </div>
+                      </div>
+                      <div>Diferença: <label id="lblDiffSuspect"></label></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-search fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contactos em Vigilancia -->
+            <div class="col-xl-3 col-md-6 mb-5">
+              <div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(255, 159, 64) !important;">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Contactos em Vigilância</div>
+                      <div class="row">
+                        <div class="col mr-2">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><label id="lblContacts"></label>
+                          </div>
+                        </div>
+                        <div class="col mr-2">
+                          <i id="iconContact" class="fas"></i>
+                        </div>
+                      </div>
+                      <div>Diferença: <label id="lblDiffContact"></label></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-phone fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+           
+
 
             <!-- Crescimento -->
-            <div class="col-xl-2 col-md-6 mb-5">
+            <div class="col-xl-3 col-md-6 mb-5">
               <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -360,11 +477,11 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  
-                    <div id="map">
-                      <object id="mapa" data="img/mapa.svg" type="image/svg+xml" style="width: 100%;"></object>
-                    </div>
-                  
+
+                  <div id="map">
+                    <object id="mapa" data="img/mapa.svg" type="image/svg+xml" style="width: 100%;"></object>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -381,7 +498,7 @@
                     <canvas id="canvas2"></canvas>
                   </div>
                 </div>
-            </div>
+              </div>
             </div>
           </div>
 
@@ -403,7 +520,7 @@
               </div>
             </div>
           </div>
-          
+
 
           <!-- Noticias -->
           <div class="row">
@@ -473,56 +590,56 @@
 
   <script language="javascript">
 
-var svgObject
+    var svgObject
 
-var svgholder = document.getElementById("mapa");
+    var svgholder = document.getElementById("mapa");
 
-svgholder.onload = function() {
-  $.ajax({
+    svgholder.onload = function () {
+      $.ajax({
         type: "GET",
         url: "data/freguesia.csv",
         dataType: "text",
-        success: function (data) { 
-            processLocalData(data); 
-            svgObject = document.getElementById('mapa').contentDocument;
-            svgObject.getElementById('countEnc').textContent =          localdata.locEnc[localdata.locEnc.length-1];
-            svgObject.getElementById('countSantoIsidoro').textContent=  localdata.locSantoIsidoro[localdata.locSantoIsidoro.length-1];
-            svgObject.getElementById('countEriceira').textContent=      localdata.locEriceira[localdata.locEriceira.length-1];
-            svgObject.getElementById('countCarvoeira').textContent=     localdata.locCarvoeira[localdata.locCarvoeira.length-1];
-            svgObject.getElementById('countAzueira').textContent=       localdata.locAzueira[localdata.locAzueira.length-1];
-            svgObject.getElementById('countMafra').textContent=         localdata.locMafra[localdata.locMafra.length-1];
-            svgObject.getElementById('countCheleiros').textContent=     localdata.locCheleiros[localdata.locCheleiros.length-1];
-            svgObject.getElementById('countGradil').textContent=        localdata.locGradil[localdata.locGradil.length-1];
-            svgObject.getElementById('countMalveira').textContent=      localdata.locMalveira[localdata.locMalveira.length-1];
-            svgObject.getElementById('countMilharado').textContent=     localdata.locMilharado[localdata.locMilharado.length-1];
-            svgObject.getElementById('countVenda').textContent=         localdata.locVenda[localdata.locVenda.length-1]; 
-            drawPieChart();
+        success: function (data) {
+          processLocalData(data);
+          svgObject = document.getElementById('mapa').contentDocument;
+          svgObject.getElementById('countEnc').textContent = localdata.locEnc[localdata.locEnc.length - 1];
+          svgObject.getElementById('countSantoIsidoro').textContent = localdata.locSantoIsidoro[localdata.locSantoIsidoro.length - 1];
+          svgObject.getElementById('countEriceira').textContent = localdata.locEriceira[localdata.locEriceira.length - 1];
+          svgObject.getElementById('countCarvoeira').textContent = localdata.locCarvoeira[localdata.locCarvoeira.length - 1];
+          svgObject.getElementById('countAzueira').textContent = localdata.locAzueira[localdata.locAzueira.length - 1];
+          svgObject.getElementById('countMafra').textContent = localdata.locMafra[localdata.locMafra.length - 1];
+          svgObject.getElementById('countCheleiros').textContent = localdata.locCheleiros[localdata.locCheleiros.length - 1];
+          svgObject.getElementById('countGradil').textContent = localdata.locGradil[localdata.locGradil.length - 1];
+          svgObject.getElementById('countMalveira').textContent = localdata.locMalveira[localdata.locMalveira.length - 1];
+          svgObject.getElementById('countMilharado').textContent = localdata.locMilharado[localdata.locMilharado.length - 1];
+          svgObject.getElementById('countVenda').textContent = localdata.locVenda[localdata.locVenda.length - 1];
+          drawPieChart();
         }
-    });
-}
+      });
+    }
     // Document Ready
-$(document).ready(function () {
-    $.ajax({
+    $(document).ready(function () {
+      $.ajax({
         type: "GET",
         url: "data/data.csv",
         dataType: "text",
-        success: function (data) { 
-            processMainData(data); 
-            drawChart();
-            drawActiveChart()
+        success: function (data) {
+          processMainData(data);
+          drawChart();
+          drawActiveChart()
         }
-    });
+      });
 
-   
 
-    $.ajax('rss.php', {
+
+      $.ajax('rss.php', {
         accepts: {
-            xml: "application/rss+xml"
+          xml: "application/rss+xml"
         },
         datatype: "xml",
         success: function (data) { processNews(data) }
+      });
     });
-});
   </script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->

@@ -1,70 +1,131 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name="description" content=""><meta name="author" content=""><meta name="og:image" content=""><style>@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
-      div#chart1, div#chart2 {
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name="description" content=""><meta name="author" content=""><meta name="og:image" content=""><style>.btn-facebook {
+      color: #fff;
+      background-color: #4C67A1;
+      border-radius: 0!important;
+      border-width: 1px!important;
+      border-style: solid!important;
+    }
+
+    .btn-facebook:hover {
+      color: #fff;
+      background-color: #405D9B;
+    }
+
+    .btn-facebook:focus {
+      color: #fff;
+    }
+
+    .btn-reddit {
+      color: #fff!important;
+      background-color: #EF4623!important ;
+      border-radius: 0!important;
+      border-width: 1px!important;
+      border-style: solid!important;
+    }
+
+    .btn-reddit:hover {
+      color: #fff!important;
+      background-color: rgb(173, 51, 27)!important;
+    }
+
+    .btn-reddit:focus {
+      color: #fff!important;
+    }
+
+    .btn-twitter {
+      color: #fff !important;
+      background-color: #00ACEE !important;
+      border-radius: 0!important;
+
+      border-width: 1px!important;
+      border-style: solid!important;
+      border-color: #0075a2!important;
+    }
+
+    .btn-twitter:link,
+    .btn-twitter:visited {
+      color: #fff!important;
+    }
+
+    .btn-twitter:active,
+    .btn-twitter:hover {
+      background: #0075a2!important;
+      color: #fff!important;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+
+      div#chart1,
+      div#chart2 {
         display: none;
       }
 
     }
 
     @media screen and (orientation: landscape) {
-      div#chart1alert, div#chart2alert {
+
+      div#chart1alert,
+      div#chart2alert {
         display: none;
       }
     }
+
     #map {
-    position:relative
-}
-    .map_title{
-      position:absolute;
-    }</style><title>COVID-19 Situação Mafra</title><link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"><link href="css/sb-admin-2.min.css" rel="stylesheet"></head><body id="page-top"><div id="wrapper"><ul class="sidebar-expanded d-none d-md-block navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"><a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html"><div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-virus"></i></div><div class="sidebar-brand-text mx-3"><img src="img/MafraLab-logo.png" class="img-fluid"></div></a><hr class="sidebar-divider my-0"><li class="nav-item active"><a class="nav-link" href="index.html"><i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li><li class="nav-item active"><a class="nav-link" href="mailto:diogo.alves@mafralab.com"><i class="fas fa-fw fa-envelope"></i> <span>Contacto</span></a></li><li class="nav-item active"><a class="nav-link" href="https://www.facebook.com/MafraLabCom/"><i class="fab fa-facebook-f"></i> <span>Facebook</span></a></li><li class="nav-item active"><a class="nav-link" href="https://github.com/killercode/covid-mafra"><i class="fab fa-github"></i> <span>GitHub</span></a></li><hr class="sidebar-divider"></ul><div id="content-wrapper" class="d-flex flex-column"><div id="content"><nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"><button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3"><i class="fa fa-bars"></i></button><div class="h3">COVID-19 Mafra</div></nav><div class="container-fluid"><div class="d-sm-flex align-items-center justify-content-between mb-4"><div class="h5 mb-0 text-gray-800">Situação do Concelho à data de 22/04/2020 ( Actualizado a 23/04/2020 )</div></div><div class="row"><div class="col-xl-2 col-md-6 mb-5"><div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(153, 102, 255) !important;"><div class="card-body"><div class="row no-gutters align-items-center"><div class="col mr-2"><div class="text-xs font-weight-bold text-info text-uppercase mb-1">Casos Confirmados</div><div class="row"><div class="col mr-2"><div class="h5 mb-0 font-weight-bold text-gray-800"><label id="lblConfirmed"></label></div></div><div class="col mr-2"><i id="iconConfirmed" class="fas"></i></div></div><div>Diferença: <label id="lblDiffConfirmed"></label></div></div><div class="col-auto"><i class="fas fa-virus fa-2x text-gray-300"></i></div></div></div></div></div><div class="col-xl-2 col-md-6 mb-5"><div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(54, 162, 235) !important;"><div class="card-body"><div class="row no-gutters align-items-center"><div class="col mr-2"><div class="text-xs font-weight-bold text-info text-uppercase mb-1">Casos Suspeitos</div><div class="row"><div class="col mr-2"><div class="h5 mb-0 font-weight-bold text-gray-800"><label id="lblSuspects"></label></div></div><div class="col mr-2"><i id="iconSuspect" class="fas"></i></div></div><div>Diferença: <label id="lblDiffSuspect"></label></div></div><div class="col-auto"><i class="fas fa-search fa-2x text-gray-300"></i></div></div></div></div></div><div class="col-xl-2 col-md-6 mb-5"><div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(255, 159, 64) !important;"><div class="card-body"><div class="row no-gutters align-items-center"><div class="col mr-2"><div class="text-xs font-weight-bold text-info text-uppercase mb-1">Contactos em Vigilância</div><div class="row"><div class="col mr-2"><div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><label id="lblContacts"></label></div></div><div class="col mr-2"><i id="iconContact" class="fas"></i></div></div><div>Diferença: <label id="lblDiffContact"></label></div></div><div class="col-auto"><i class="fas fa-phone fa-2x text-gray-300"></i></div></div></div></div></div><div class="col-xl-2 col-md-6 mb-5"><div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(255, 99, 132) !important;"><div class="card-body"><div class="row no-gutters align-items-center"><div class="col mr-2"><div class="text-xs font-weight-bold text-info text-uppercase mb-1">Obitos</div><div class="row"><div class="col mr-2"><div class="h5 mb-0 font-weight-bold text-gray-800"><label id="lblDeaths"></label></div></div><div class="col mr-2"><i id="iconDeath" class="fas"></i></div></div><div>Diferença: <label id="lblDiffDeath"></label></div></div><div class="col-auto"><i class="fas fa-skull-crossbones fa-2x text-gray-300"></i></div></div></div></div></div><div class="col-xl-2 col-md-6 mb-5"><div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(75, 192, 192) !important;"><div class="card-body"><div class="row no-gutters align-items-center"><div class="col mr-2"><div class="text-xs font-weight-bold text-info text-uppercase mb-1">Recuperados</div><div class="row"><div class="col mr-2"><div class="h5 mb-0 font-weight-bold text-gray-800"><label id="lblRecovered"></label></div></div><div class="col mr-2"><i id="iconRecovery" class="fas"></i></div></div><div>Diferença: <label id="lblDiffRecovery"></label></div></div><div class="col-auto"><i class="fas fa-briefcase-medical fa-2x text-gray-300"></i></div></div></div></div></div><div class="col-xl-2 col-md-6 mb-5"><div class="card border-left-warning shadow h-100 py-2"><div class="card-body"><div class="row no-gutters align-items-center"><div class="col mr-2"><div class="text-xs font-weight-bold text-info text-uppercase mb-1">Taxa de Crescimento</div><div class="row"><div class="col mr-2"><div class="h5 mb-0 font-weight-bold text-gray-800"><label id="lblGrowth"></label></div></div><div class="col mr-2"><i id="iconGrowth" class="fas"></i></div></div><div>Diferença: <label id="lblDiffGrowth"></label></div></div><div class="col-auto"><i class="fas fa-chart-line fa-2x text-gray-300"></i></div></div></div></div></div></div><div class="row"><div class="col-xl-12 col-lg-12 mb-5" id="chart1alert"><div class="card shadow mb-12"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="m-0 font-weight-bold text-primary">Evolução Diaria de Casos Confirmados</h6></div><div class="card-body"><div class="chart-area"><div>Para visualizar o grafico no telemovel coloque o dispositivo na horizontal!</div></div></div></div></div><div class="col-xl-12 col-lg-12 mb-5" id="chart1"><div class="card shadow mb-12"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="m-0 font-weight-bold text-primary">Evolução Diaria de Casos Confirmados</h6></div><div class="card-body"><div class="chart-area"><canvas id="canvas"></canvas></div></div></div></div></div><div class="row"><div class="col-xl-12 col-lg-12 mb-5" id="chart2alert"><div class="card shadow mb-12"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="m-0 font-weight-bold text-primary">Evolução Diaria de Casos Confirmados</h6></div><div class="card-body"><div class="chart-area"><div>Para visualizar o grafico no telemovel coloque o dispositivo na horizontal!</div></div></div></div></div><div class="col-xl-12 col-lg-12 mb-5" id="chart2"><div class="card shadow mb-12"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="m-0 font-weight-bold text-primary">Evolução Diaria Casos Activos</h6></div><div class="card-body"><div class="chart-area"><canvas id="canvas3"></canvas></div></div></div></div></div><div class="row"><div class="col-xl-6 col-lg-12 mb-5"><div class="card shadow mb-12"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="m-0 font-weight-bold text-primary">Mapa Epidemiológico</h6></div><div class="card-body"><div id="map"><object id="mapa" data="img/mapa.svg" type="image/svg+xml" style="width: 100%;"></object></div></div></div></div><div class="col-xl-6 col-lg-12 mb-5"><div class="card shadow mb-12"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="m-0 font-weight-bold text-primary">Distribuição de casos por freguesia</h6></div><div class="card-body"><div class="chart-area"><canvas id="canvas2"></canvas></div></div></div></div></div><div class="row"><div class="col-xl-12 col-lg-12 mb-5" id="chart1alert"><div class="card shadow mb-12"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="m-0 font-weight-bold text-primary">Evolução Diaria de Casos Confirmados</h6></div><div class="card-body"><div class="chart-area"><div>Para visualizar o grafico no telemovel coloque o dispositivo na horizontal!</div></div></div></div></div></div><div class="row"><div class="col-xl-12 col-lg-12 mb-5"><div class="card shadow mb-12"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="m-0 font-weight-bold text-primary">Noticias COVID-19 Mafra</h6></div><div class="card-body" id="news"></div></div></div></div></div></div></div></div><footer class="sticky-footer bg-white"><div class="container my-auto"><div class="copyright text-center my-auto"><span>Copyright &copy; MafraLab 2020</span><br><span>Os dados providenciados neste website são recolhidos do report diario da Camara Municipal de Mafra</span></div></div></footer><a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a><script src="vendor/jquery/jquery.min.js"></script><script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script><script src="vendor/jquery-easing/jquery.easing.min.js"></script><script src="js/sb-admin-2.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script><script src="js/Chart.PieceLabel.min.js"></script><script src="js/utils.min.js"></script><script src="js/loaddata.min.js"></script><script src="js/dailychart.min.js"></script><script src="js/activechart.min.js"></script><script src="js/distributionchart.min.js"></script><script language="javascript">var svgObject
+      position: relative
+    }
 
-var svgholder = document.getElementById("mapa");
+    .map_title {
+      position: absolute;
+    }</style><title>COVID-19 Situação Mafra</title><link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"><link href="css/sb-admin-2.min.css" rel="stylesheet"></head><body id="page-top"><div id="wrapper"><ul class="sidebar-expanded d-none d-md-block navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"><a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html"><div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-virus"></i></div><div class="sidebar-brand-text mx-3"><img src="img/MafraLab-logo.png" class="img-fluid"></div></a><hr class="sidebar-divider my-0"><li class="nav-item active"><a class="nav-link" href="index.html"><i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li><li class="nav-item active"><a class="nav-link" href="mailto:diogo.alves@mafralab.com"><i class="fas fa-fw fa-envelope"></i> <span>Contacto</span></a></li><li class="nav-item active"><a class="nav-link" href="https://www.facebook.com/MafraLabCom/"><i class="fab fa-facebook-f"></i> <span>Facebook</span></a></li><li class="nav-item active"><a class="nav-link" href="https://github.com/killercode/covid-mafra"><i class="fab fa-github"></i> <span>GitHub</span></a></li><hr class="sidebar-divider"></ul><div id="content-wrapper" class="d-flex flex-column"><div id="content"><nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"><button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3"><i class="fa fa-bars"></i></button><div class="h3">COVID-19 Mafra</div></nav><div class="container-fluid"><div class="d-sm-flex align-items-center justify-content-between mb-4"><div class="row"><div class="col-auto"><div class="h5 mb-0 text-gray-800">Situação do Concelho à data de 22/04/2020 ( Actualizado a 23/04/2020 )</div></div></div><div class="row"><div class="col-auto"><a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://covid.mafralab.com&p[images][0]=MafraLab-logo.png&p[title]=Seguimento%20COVID-19%20no%20Concelho%20de%20Mafra&p[summary]=Dados%20actualizados%20Diariamente!" target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false"><button style="width:100%; margin-top:10px;" type="button" class="btn btn-facebook btn-lg"><i class="fab fa-facebook-f"></i> Partilhar no Facebook</button></a></div><div class="col-auto"><a href="https://twitter.com/share?url=https://covid.mafralab.com/twitter-button/" title="Twitter" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=450'); return false"><button style="width:100%; margin-top:10px;" target="_blank" class="btn btn-twitter btn-lg"><i class="fab fa-twitter"></i> Partilhar no Twitter</button></a></div><div class="col-auto"><a href="https://www.reddit.com/submit?url=https%3A%2F%2Fcovid.mafralab.com%2F&title=Dados%20do%20Covid-19%20no%20Concelho%20de%Mafra20" title="Reddit" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=550'); return false"><button style="width:100%; margin-top:10px;" type="button" class="btn btn-reddit btn-lg"><i class="fab fa-reddit"></i> Partilhar no Reddit</button></a></div></div></div><div class="row"><div class="col-xl-4 col-md-6 mb-5"><div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(153, 102, 255) !important;"><div class="card-body"><div class="row no-gutters align-items-center"><div class="col mr-2"><div class="text-xs font-weight-bold text-info text-uppercase mb-1">Casos Confirmados</div><div class="row"><div class="col mr-2"><div class="h5 mb-0 font-weight-bold text-gray-800"><label id="lblConfirmed"></label></div></div><div class="col mr-2"><i id="iconConfirmed" class="fas"></i></div></div><div>Diferença: <label id="lblDiffConfirmed"></label></div></div><div class="col-auto"><i class="fas fa-virus fa-2x text-gray-300"></i></div></div></div></div></div><div class="col-xl-4 col-md-6 mb-5"><div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(255, 0, 0) !important;"><div class="card-body"><div class="row no-gutters align-items-center"><div class="col mr-2"><div class="text-xs font-weight-bold text-info text-uppercase mb-1">Casos Ativos</div><div class="row"><div class="col mr-2"><div class="h5 mb-0 font-weight-bold text-gray-800"><label id="lblActive"></label></div></div><div class="col mr-2"><i id="iconActive" class="fas"></i></div></div><div>Diferença: <label id="lblDiffActive"></label></div></div><div class="col-auto"><i class="fas fa-search fa-2x text-gray-300"></i></div></div></div></div></div><div class="col-xl-4 col-md-6 mb-5"><div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(255, 99, 132) !important;"><div class="card-body"><div class="row no-gutters align-items-center"><div class="col mr-2"><div class="text-xs font-weight-bold text-info text-uppercase mb-1">Obitos</div><div class="row"><div class="col mr-2"><div class="h5 mb-0 font-weight-bold text-gray-800"><label id="lblDeaths"></label></div></div><div class="col mr-2"><i id="iconDeath" class="fas"></i></div></div><div>Diferença: <label id="lblDiffDeath"></label></div></div><div class="col-auto"><i class="fas fa-skull-crossbones fa-2x text-gray-300"></i></div></div></div></div></div><div class="col-xl-3 col-md-6 mb-5"><div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(75, 192, 192) !important;"><div class="card-body"><div class="row no-gutters align-items-center"><div class="col mr-2"><div class="text-xs font-weight-bold text-info text-uppercase mb-1">Recuperados</div><div class="row"><div class="col mr-2"><div class="h5 mb-0 font-weight-bold text-gray-800"><label id="lblRecovered"></label></div></div><div class="col mr-2"><i id="iconRecovery" class="fas"></i></div></div><div>Diferença: <label id="lblDiffRecovery"></label></div></div><div class="col-auto"><i class="fas fa-briefcase-medical fa-2x text-gray-300"></i></div></div></div></div></div><div class="col-xl-3 col-md-6 mb-5"><div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(54, 162, 235) !important;"><div class="card-body"><div class="row no-gutters align-items-center"><div class="col mr-2"><div class="text-xs font-weight-bold text-info text-uppercase mb-1">Casos Suspeitos</div><div class="row"><div class="col mr-2"><div class="h5 mb-0 font-weight-bold text-gray-800"><label id="lblSuspects"></label></div></div><div class="col mr-2"><i id="iconSuspect" class="fas"></i></div></div><div>Diferença: <label id="lblDiffSuspect"></label></div></div><div class="col-auto"><i class="fas fa-search fa-2x text-gray-300"></i></div></div></div></div></div><div class="col-xl-3 col-md-6 mb-5"><div class="card shadow h-100 py-2" style="border-left: .25rem solid rgb(255, 159, 64) !important;"><div class="card-body"><div class="row no-gutters align-items-center"><div class="col mr-2"><div class="text-xs font-weight-bold text-info text-uppercase mb-1">Contactos em Vigilância</div><div class="row"><div class="col mr-2"><div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><label id="lblContacts"></label></div></div><div class="col mr-2"><i id="iconContact" class="fas"></i></div></div><div>Diferença: <label id="lblDiffContact"></label></div></div><div class="col-auto"><i class="fas fa-phone fa-2x text-gray-300"></i></div></div></div></div></div><div class="col-xl-3 col-md-6 mb-5"><div class="card border-left-warning shadow h-100 py-2"><div class="card-body"><div class="row no-gutters align-items-center"><div class="col mr-2"><div class="text-xs font-weight-bold text-info text-uppercase mb-1">Taxa de Crescimento</div><div class="row"><div class="col mr-2"><div class="h5 mb-0 font-weight-bold text-gray-800"><label id="lblGrowth"></label></div></div><div class="col mr-2"><i id="iconGrowth" class="fas"></i></div></div><div>Diferença: <label id="lblDiffGrowth"></label></div></div><div class="col-auto"><i class="fas fa-chart-line fa-2x text-gray-300"></i></div></div></div></div></div></div><div class="row"><div class="col-xl-12 col-lg-12 mb-5" id="chart1alert"><div class="card shadow mb-12"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="m-0 font-weight-bold text-primary">Evolução Diaria de Casos Confirmados</h6></div><div class="card-body"><div class="chart-area"><div>Para visualizar o grafico no telemovel coloque o dispositivo na horizontal!</div></div></div></div></div><div class="col-xl-12 col-lg-12 mb-5" id="chart1"><div class="card shadow mb-12"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="m-0 font-weight-bold text-primary">Evolução Diaria de Casos Confirmados</h6></div><div class="card-body"><div class="chart-area"><canvas id="canvas"></canvas></div></div></div></div></div><div class="row"><div class="col-xl-12 col-lg-12 mb-5" id="chart2alert"><div class="card shadow mb-12"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="m-0 font-weight-bold text-primary">Evolução Diaria de Casos Confirmados</h6></div><div class="card-body"><div class="chart-area"><div>Para visualizar o grafico no telemovel coloque o dispositivo na horizontal!</div></div></div></div></div><div class="col-xl-12 col-lg-12 mb-5" id="chart2"><div class="card shadow mb-12"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="m-0 font-weight-bold text-primary">Evolução Diaria Casos Activos</h6></div><div class="card-body"><div class="chart-area"><canvas id="canvas3"></canvas></div></div></div></div></div><div class="row"><div class="col-xl-6 col-lg-12 mb-5"><div class="card shadow mb-12"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="m-0 font-weight-bold text-primary">Mapa Epidemiológico</h6></div><div class="card-body"><div id="map"><object id="mapa" data="img/mapa.svg" type="image/svg+xml" style="width: 100%;"></object></div></div></div></div><div class="col-xl-6 col-lg-12 mb-5"><div class="card shadow mb-12"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="m-0 font-weight-bold text-primary">Distribuição de casos por freguesia</h6></div><div class="card-body"><div class="chart-area"><canvas id="canvas2"></canvas></div></div></div></div></div><div class="row"><div class="col-xl-12 col-lg-12 mb-5" id="chart1alert"><div class="card shadow mb-12"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="m-0 font-weight-bold text-primary">Evolução Diaria de Casos Confirmados</h6></div><div class="card-body"><div class="chart-area"><div>Para visualizar o grafico no telemovel coloque o dispositivo na horizontal!</div></div></div></div></div></div><div class="row"><div class="col-xl-12 col-lg-12 mb-5"><div class="card shadow mb-12"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="m-0 font-weight-bold text-primary">Noticias COVID-19 Mafra</h6></div><div class="card-body" id="news"></div></div></div></div></div></div></div></div><footer class="sticky-footer bg-white"><div class="container my-auto"><div class="copyright text-center my-auto"><span>Copyright &copy; MafraLab 2020</span><br><span>Os dados providenciados neste website são recolhidos do report diario da Camara Municipal de Mafra</span></div></div></footer><a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a><script src="vendor/jquery/jquery.min.js"></script><script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script><script src="vendor/jquery-easing/jquery.easing.min.js"></script><script src="js/sb-admin-2.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script><script src="js/Chart.PieceLabel.min.js"></script><script src="js/utils.min.js"></script><script src="js/loaddata.min.js"></script><script src="js/dailychart.min.js"></script><script src="js/activechart.min.js"></script><script src="js/distributionchart.min.js"></script><script language="javascript">var svgObject
 
-svgholder.onload = function() {
-  $.ajax({
+    var svgholder = document.getElementById("mapa");
+
+    svgholder.onload = function () {
+      $.ajax({
         type: "GET",
         url: "data/freguesia.csv",
         dataType: "text",
-        success: function (data) { 
-            processLocalData(data); 
-            svgObject = document.getElementById('mapa').contentDocument;
-            svgObject.getElementById('countEnc').textContent =          localdata.locEnc[localdata.locEnc.length-1];
-            svgObject.getElementById('countSantoIsidoro').textContent=  localdata.locSantoIsidoro[localdata.locSantoIsidoro.length-1];
-            svgObject.getElementById('countEriceira').textContent=      localdata.locEriceira[localdata.locEriceira.length-1];
-            svgObject.getElementById('countCarvoeira').textContent=     localdata.locCarvoeira[localdata.locCarvoeira.length-1];
-            svgObject.getElementById('countAzueira').textContent=       localdata.locAzueira[localdata.locAzueira.length-1];
-            svgObject.getElementById('countMafra').textContent=         localdata.locMafra[localdata.locMafra.length-1];
-            svgObject.getElementById('countCheleiros').textContent=     localdata.locCheleiros[localdata.locCheleiros.length-1];
-            svgObject.getElementById('countGradil').textContent=        localdata.locGradil[localdata.locGradil.length-1];
-            svgObject.getElementById('countMalveira').textContent=      localdata.locMalveira[localdata.locMalveira.length-1];
-            svgObject.getElementById('countMilharado').textContent=     localdata.locMilharado[localdata.locMilharado.length-1];
-            svgObject.getElementById('countVenda').textContent=         localdata.locVenda[localdata.locVenda.length-1]; 
-            drawPieChart();
+        success: function (data) {
+          processLocalData(data);
+          svgObject = document.getElementById('mapa').contentDocument;
+          svgObject.getElementById('countEnc').textContent = localdata.locEnc[localdata.locEnc.length - 1];
+          svgObject.getElementById('countSantoIsidoro').textContent = localdata.locSantoIsidoro[localdata.locSantoIsidoro.length - 1];
+          svgObject.getElementById('countEriceira').textContent = localdata.locEriceira[localdata.locEriceira.length - 1];
+          svgObject.getElementById('countCarvoeira').textContent = localdata.locCarvoeira[localdata.locCarvoeira.length - 1];
+          svgObject.getElementById('countAzueira').textContent = localdata.locAzueira[localdata.locAzueira.length - 1];
+          svgObject.getElementById('countMafra').textContent = localdata.locMafra[localdata.locMafra.length - 1];
+          svgObject.getElementById('countCheleiros').textContent = localdata.locCheleiros[localdata.locCheleiros.length - 1];
+          svgObject.getElementById('countGradil').textContent = localdata.locGradil[localdata.locGradil.length - 1];
+          svgObject.getElementById('countMalveira').textContent = localdata.locMalveira[localdata.locMalveira.length - 1];
+          svgObject.getElementById('countMilharado').textContent = localdata.locMilharado[localdata.locMilharado.length - 1];
+          svgObject.getElementById('countVenda').textContent = localdata.locVenda[localdata.locVenda.length - 1];
+          drawPieChart();
         }
-    });
-}
+      });
+    }
     // Document Ready
-$(document).ready(function () {
-    $.ajax({
+    $(document).ready(function () {
+      $.ajax({
         type: "GET",
         url: "data/data.csv",
         dataType: "text",
-        success: function (data) { 
-            processMainData(data); 
-            drawChart();
-            drawActiveChart()
+        success: function (data) {
+          processMainData(data);
+          drawChart();
+          drawActiveChart()
         }
-    });
+      });
 
-   
 
-    $.ajax('rss.php', {
+
+      $.ajax('rss.php', {
         accepts: {
-            xml: "application/rss+xml"
+          xml: "application/rss+xml"
         },
         datatype: "xml",
         success: function (data) { processNews(data) }
-    });
-});</script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-107213149-2"></script><script>window.dataLayer = window.dataLayer || [];
+      });
+    });</script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-107213149-2"></script><script>window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
